@@ -18,7 +18,7 @@ class TaskAdmin(admin.ModelAdmin):
         "is_done",
         "created_at",
     ]
-    
+
     def display_tags(self, obj):
         return ", ".join(tag.name for tag in obj.tags.all())
 
@@ -28,4 +28,4 @@ class TaskAdmin(admin.ModelAdmin):
     list_per_page = 10
     fields = ["title", "description", "deadline", "tags", "is_done", "created_at"]
     readonly_fields = ["created_at"]
-    display_tags.short_description = 'Теги'
+    display_tags.short_description = "Теги"

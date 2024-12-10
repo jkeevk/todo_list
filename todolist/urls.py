@@ -20,12 +20,11 @@ from rest_framework import routers
 from task.views import TaskViewSet, TagsViewSet
 
 
-
 router = routers.DefaultRouter()
-router.register(r'tasks', TaskViewSet, basename='task')
-router.register(r'tags', TagsViewSet, basename='tags')
+router.register(r"tasks", TaskViewSet, basename="task")
+router.register(r"tags", TagsViewSet, basename="tags")
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('api/', include(router.urls)),
+    path("admin/", admin.site.urls),
+    path("api/", include(router.urls)),
 ]

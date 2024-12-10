@@ -73,7 +73,7 @@ Content-Type: application/json
 
 ###
 
-# фильтрация задач, которые имеют тег с ID 1
+# фильтрация задач по тегу
 GET {{baseUrl}}/tasks/?tags=1
 Content-Type: application/json
 

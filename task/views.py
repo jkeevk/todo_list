@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from rest_framework.viewsets import ModelViewSet
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import SearchFilter, OrderingFilter
@@ -13,13 +12,14 @@ class TaskViewSet(ModelViewSet):
     filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
 
     filterset_fields = [
-        "is_done", "tags",
+        "is_done",
+        "tags",
     ]
     search_fields = [
         "title",
     ]
-    ordering_fields = ['deadline', 'created_at', 'title']
-    ordering = ['-created_at']
+    ordering_fields = ["deadline", "created_at", "title"]
+    ordering = ["-created_at"]
     pagination_class = LimitOffsetPagination
 
 
