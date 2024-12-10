@@ -1,0 +1,110 @@
+# примеры API-запросов
+
+@baseUrl = http://localhost:8000/api
+
+# получение списка задач
+GET {{baseUrl}}/tasks/
+Content-Type: application/json
+
+###
+
+# создание задачи
+POST {{baseUrl}}/tasks/
+Content-Type: application/json
+
+{
+  "title": "Купить батон",
+  "description": "Купить батон в Пятёрочке до 17:00",
+  "deadline": "2024-12-13 17:00:00.000 +0300",
+  "tags": [1]
+}
+
+###
+
+# изменение задачи
+PATCH {{baseUrl}}/tasks/1/
+Content-Type: application/json
+
+{
+  "title": "Купить молоко",
+  "tags": [1, 2]
+}
+
+###
+
+# изменение статуса задачи 
+PATCH {{baseUrl}}/tasks/1/
+Content-Type: application/json
+
+{
+  "is_done": true
+}
+
+###
+
+# удаление задачи
+DELETE {{baseUrl}}/tasks/12/
+
+###
+
+# создание тега
+POST {{baseUrl}}/tags/
+Content-Type: application/json
+
+{
+  "name": "Покупки"
+}
+
+###
+
+# изменение тега
+PATCH {{baseUrl}}/tags/1/
+Content-Type: application/json
+
+{
+  "name": "Покупки для отпуска"
+}
+
+###
+
+# получение информации по тегу
+GET {{baseUrl}}/tags/1/
+Content-Type: application/json
+
+###
+
+# фильтрация задач, которые имеют тег с ID 1
+GET {{baseUrl}}/tasks/?tags=1
+Content-Type: application/json
+
+###
+
+# фильтрация по статусу выполнения
+GET {{baseUrl}}/tasks/?is_done=true
+Content-Type: application/json
+
+###
+
+# сортировка задач по сроку выполнения
+GET {{baseUrl}}/tasks/?ordering=deadline
+Content-Type: application/json
+
+###
+
+# сортировка задач по дате создания
+GET {{baseUrl}}/tasks/?ordering=created_at
+Content-Type: application/json
+
+###
+
+# поиск задач по заголовку
+GET {{baseUrl}}/tasks/?search=батон
+Content-Type: application/json
+
+###
+
+# поиск задач помощью пагинации
+GET {{baseUrl}}/tasks/?limit=10&offset=15
+Content-Type: application/json
+
+###
