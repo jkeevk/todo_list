@@ -3,7 +3,7 @@ from task.models import Task, Tag
 
 
 @admin.register(Tag)
-class TaskAdmin(admin.ModelAdmin):
+class TagAdmin(admin.ModelAdmin):
     list_display = ["name"]
 
 
