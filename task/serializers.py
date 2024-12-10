@@ -8,9 +8,16 @@ class TagSerializer(serializers.ModelSerializer):
         fields = ['id', 'name']
 
 class TaskSerializer(serializers.ModelSerializer):
-    tags = TagSerializer(many=True, required=False)
+    tags = serializers.PrimaryKeyRelatedField(queryset=Tag.objects.all(), many=True, required=False)
     
     class Meta:
         model = Task
         fields = ['id', 'title', 'description', 'deadline', 'tags', 'is_done', 'created_at']
-        read_only_fields = ['created_at', 'is_done']
+        read_only_fields = ['created_at']
+
+
+    def create(self, validated_data):
+        tags_data = validated_data.pop('tags', [])
+        task = Task.objects.create(**validated_data)
+        task.tags.set(tags_data)
+        return task

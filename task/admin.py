@@ -23,13 +23,9 @@ class TaskAdmin(admin.ModelAdmin):
         return ", ".join(tag.name for tag in obj.tags.all())
 
     list_filter = ["tags", "is_done", "created_at"]
-
     search_fields = ["title", "description"]
-
     ordering = ["-created_at"]
-
     list_per_page = 10
-
     fields = ["title", "description", "deadline", "tags", "is_done", "created_at"]
-
     readonly_fields = ["created_at"]
+    display_tags.short_description = 'Теги'
